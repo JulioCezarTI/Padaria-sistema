@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Compra - Padaria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #1e1e2f;
+            color: #fff;
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .panel {
+            flex: 1;
+            background-color: #2c2c3c;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 15px #ff4c4c77;
+        }
+
+        h2 {
+            color: #ff4c4c;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background-color: #444;
+            color: white;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 12px;
+            background-color: #ff4c4c;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #ff1a1a;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        li {
+            padding: 8px;
+            background-color: #3b3b50;
+            border-radius: 8px;
+            margin-bottom: 6px;
+        }
+
+        .nota-fiscal {
+            display: none;
+            background-color: #1a1a2f;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px dashed #ffcc00;
+        }
+
+        .total {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #ffcc00;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .emoji {
+            font-size: 24px;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="panel">
+    <h2>🧑 Cadastro do Usuário</h2>
+    <label>Nome:</label>
+    <input id="nomeUsuario" placeholder="Seu nome" type="text">
+
+    <label>Email:</label>
+    <input id="emailUsuario" placeholder="Seu email" type="email">
+
+    <h2>🥐 Cadastro de Itens</h2>
+    <label>Item:</label>
+    <input id="nomeItem" placeholder="Ex: Pão Francês" type="text">
+
+    <label>Preço (R$):</label>
+    <input id="precoItem" placeholder="Ex: 1.50" type="number">
+
+    <label>Emoji:</label>
+    <input id="emojiItem" placeholder="Ex: 🥖" type="text">
+
+    <button onclick="adicionarItem()">Adicionar Item</button>
+
+    <ul id="listaItens"></ul>
+
+    <button onclick="finalizarCompra()">🧾 Finalizar Compra</button>
+</div>
+
+<div class="panel">
+    <h2 class="center">📜 Nota Fiscal</h2>
+    <div class="nota-fiscal" id="notaFiscal">
+        <p><strong>👤 Nome:</strong> <span id="nfNome"></span></p>
+        <p><strong>📧 Email:</strong> <span id="nfEmail"></span></p>
+        <p><strong>🛍️ Itens:</strong></p>
+        <ul id="nfItens"></ul>
+        <p class="total">💰 Total: R$ <span id="nfTotal">0.00</span></p>
+    </div>
+</div>
+
+<script>
+    const listaItens = document.getElementById("listaItens");
+    const nfItens = document.getElementById("nfItens");
+    const notaFiscal = document.getElementById("notaFiscal");
+    let itens = [];
+
+    function adicionarItem() {
+        const nome = document.getElementById("nomeItem").value;
+        const preco = parseFloat(document.getElementById("precoItem").value);
+        const emoji = document.getElementById("emojiItem").value;
+
+        if (nome && !isNaN(preco) && emoji) {
+            const item = {nome, preco, emoji};
+            itens.push(item);
+
+            const li = document.createElement("li");
+            li.innerHTML = `<span class="emoji">${emoji}</span>${nome} - R$ ${preco.toFixed(2)}`;
+            listaItens.appendChild(li);
+
+            document.getElementById("nomeItem").value = "";
+            document.getElementById("precoItem").value = "";
+            document.getElementById("emojiItem").value = "";
+        } else {
+            alert("Preencha todos os campos do item!");
+        }
+    }
+
+    function finalizarCompra() {
+        const nomeUsuario = document.getElementById("nomeUsuario").value;
+        const emailUsuario = document.getElementById("emailUsuario").value;
+
+        if (!nomeUsuario || !emailUsuario || itens.length === 0) {
+            alert("Preencha os dados do usuário e adicione pelo menos um item!");
+            return;
+        }
+
+        document.getElementById("nfNome").textContent = nomeUsuario;
+        document.getElementById("nfEmail").textContent = emailUsuario;
+
+        nfItens.innerHTML = "";
+        let total = 0;
+
+        itens.forEach(item => {
+            const li = document.createElement("li");
+            li.innerHTML = `<span class="emoji">${item.emoji}</span>${item.nome} - R$ ${item.preco.toFixed(2)}`;
+            nfItens.appendChild(li);
+            total += item.preco;
+        });
+
+        document.getElementById("nfTotal").textContent = total.toFixed(2);
+        notaFiscal.style.display = "block";
+    }
+</script>
+</body>
+</html>

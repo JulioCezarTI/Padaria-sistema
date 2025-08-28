@@ -1,0 +1,136 @@
+/* ----- Layout geral ----- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fdf6e3;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #8b4513;
+}
+
+/* ----- Abas ----- */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    background-color: #d4a373;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.tab-button:hover {
+    background-color: #b88655;
+}
+
+.tab-button.active {
+    background-color: #8b4513;
+    font-weight: bold;
+}
+
+/* ----- Conteúdo das abas ----- */
+.tab-content {
+    display: none;
+    padding: 20px;
+    background: #fff8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ----- Formulário de cadastro ----- */
+input {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 8px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    margin-top: 10px;
+    background-color: #d4a373;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #b88655;
+}
+
+/* ----- Produtos ----- */
+.produtos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.produto {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.produto:hover {
+    transform: scale(1.03);
+}
+
+.produto img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.produto h3 {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.produto p {
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* ----- Lista de clientes e nota fiscal ----- */
+.clientes-list,
+.nota-fiscal {
+    background: #fff;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    white-space: pre-wrap; /* mantém quebras de linha do texto da nota fiscal */
+}
+
+.mensagem {
+    margin-top: 10px;
+    font-weight: bold;
+    color: green;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Cadastro de Produtos</title>
+    <style>
+        body {
+            background-color: #fdfdfd;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            margin-top: 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>🏪 Cadastro de Produto</h2>
+    <label for="produto">🍰 Nome do Produto:</label>
+    <input id="produto" placeholder="Ex: Bolo de Chocolate 🍫" type="text"/>
+
+    <label for="preco">💲 Preço:</label>
+    <input id="preco" placeholder="Ex: 9.99" type="number"/>
+
+    <button onclick="cadastrarProduto()">Cadastrar Produto</button>
+</div>
+
+<script>
+    function cadastrarProduto() {
+        const produto = document.getElementById("produto").value;
+        const preco = document.getElementById("preco").value;
+
+        alert(`Produto cadastrado!\n\n🍰 Produto: ${produto}\n💲 Preço: R$${preco}`);
+    }
+</script>
+</body>
+</html>

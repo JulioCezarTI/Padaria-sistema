@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Padaria do Júlio</title>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<h1>🧁 Padaria do Júlio - Sistema Completo</h1>
+
+<!-- Abas -->
+<div class="tabs">
+    <button class="tab-button active" data-tab="tab-usuarios">👤 Cadastro de Usuários</button>
+    <button class="tab-button" data-tab="tab-produtos">🧁 Produtos da Padaria</button>
+    <button class="tab-button" data-tab="tab-nota">🧾 Nota Fiscal e Clientes</button>
+</div>
+
+<!-- Aba 1 - Cadastro -->
+<div id="tab-usuarios" class="tab-content active">
+    <h2>👤 Cadastro do Usuário</h2>
+    <input id="nomeUsuario" placeholder="Nome completo"/>
+    <input id="telefoneUsuario" placeholder="Telefone"/>
+    <input id="emailUsuario" placeholder="Email"/>
+    <input id="cpfUsuario" placeholder="CPF"/>
+    <input id="dataNascimentoUsuario" type="date" placeholder="Data de nascimento"/>
+    <button id="btnRegistrarUsuario">👤 Registrar Usuário</button>
+    <div id="mensagemSucesso" class="mensagem"></div>
+</div>
+
+<!-- Aba 2 - Produtos -->
+<div id="tab-produtos" class="tab-content">
+    <h2>🧁 Produtos Tradicionais da Padaria</h2>
+    <div class="produtos-lista"></div>
+    <h3>Adicionar Produto ao Carrinho</h3>
+    <input id="nomeProduto" placeholder="Nome do Produto" disabled/>
+    <input id="quantidadeProduto" placeholder="Quantidade" type="number" min="1" disabled/>
+    <input id="precoProduto" placeholder="Preço Unitário (R$)" disabled/>
+    <button id="btnAdicionar" disabled>➕ Adicionar Produto</button>
+    <button id="btnFinalizar" disabled>✅ Finalizar Compra</button>
+    <div id="mensagemProduto" class="mensagem"></div>
+</div>
+
+<!-- Aba 3 - Nota Fiscal e Clientes -->
+<div id="tab-nota" class="tab-content">
+    <h2>📋 Lista de Clientes</h2>
+    <div id="clientesList" class="clientes-list"></div>
+    <h2>🧾 Nota Fiscal</h2>
+    <div id="notaFiscal" class="nota-fiscal">Nenhum cliente selecionado.</div>
+</div>
+
+<!-- Música -->
+<button id="botaoMusica">▶️ Tocar Música</button>
+<audio id="musicaFundo" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2021/10/15/audio_bf6b70a6ac.mp3?filename=soft-jazz-ambient-12454.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
